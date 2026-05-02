@@ -2,6 +2,7 @@ import { Router } from 'express'
 import type { Request, RequestHandler, Response } from 'express'
 import { z } from 'zod'
 import { supabaseAdmin } from '../config/supabase'
+import { missingRequiredEnv } from '../config/env'
 import { createError } from '../middleware/errorHandler'
 import {
   type AuthenticatedRequest,
@@ -128,6 +129,17 @@ const publicDonorSelect = `
 
 router.get('/ping', (_req, res) => {
   res.json({ success: true, message: 'Pakistan Bloodcare API is running' })
+})
+
+router.get('/config/status', (_req, res) => {
+  const missing = missingRequiredEnv()
+  res.status(missing.length ? 503 : 200).json({
+    success: missing.length === 0,
+    message: missing.length
+      ? 'Missing required Vercel environment variables'
+      : 'Required environment variables are configured',
+    missing,
+  })
 })
 
 router.get('/supabase/status', asyncHandler(async (_req, res) => {
