@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser'
 import { env } from './config/env'
 import { logger } from './config/logger'
 import { errorHandler } from './middleware/errorHandler'
+import { Request, Response, NextFunction } from 'express'
 import { router } from './routes'
 
 const app = express()
@@ -38,7 +39,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }))
 app.use(cookieParser())
 
 // ─── Request Logging ─────────────────────────────────────────
-app.use((req, _res, next) => {
+app.use((req: Request, _res: Response, next: NextFunction) => {
   logger.info(`${req.method} ${req.path}`, {
     ip: req.ip,
     userAgent: req.get('user-agent'),
@@ -47,7 +48,7 @@ app.use((req, _res, next) => {
 })
 
 // ─── Health Check ────────────────────────────────────────────
-app.get('/health', (_req, res) => {
+app.get('/health', (_req: Request, res: Response) => {
   res.json({
     status:    'ok',
     platform:  'Pakistan Bloodcare Official',
@@ -62,7 +63,7 @@ app.get('/health', (_req, res) => {
 app.use('/api', router)
 
 // ─── 404 Handler ─────────────────────────────────────────────
-app.use((_req, res) => {
+app.use((_req: Request, res: Response) => {
   res.status(404).json({ success: false, message: 'Route not found' })
 })
 

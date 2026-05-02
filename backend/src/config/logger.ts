@@ -7,7 +7,7 @@ const devFormat = combine(
   colorize(),
   timestamp({ format: 'HH:mm:ss' }),
   errors({ stack: true }),
-  printf(({ level, message, timestamp, stack }) =>
+  printf(({ level, message, timestamp, stack }: any) =>
     `${timestamp} [${level}]: ${stack ?? message}`
   )
 )

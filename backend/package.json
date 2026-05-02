@@ -11,7 +11,32 @@
     "lint": "eslint src --ext .ts",
     "lint:fix": "eslint src --ext .ts --fix"
   },
-  "keywords": ["pakistan", "bloodcare", "donation", "healthcare"],
+  "keywords": [
+    "pakistan",
+    "bloodcare",
+    "donation",
+    "healthcare"
+  ],
   "author": "Pakistan Bloodcare Official",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.105.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.0.1",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "winston": "^3.17.0",
+    "zod": "^4.4.1"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.8",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^24.12.2",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "~6.0.2"
+  }
 }
