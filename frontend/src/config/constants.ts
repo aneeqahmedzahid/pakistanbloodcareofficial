@@ -101,4 +101,6 @@ export const STOCK_LEVELS = {
 }
 
 // ─── API ──────────────────────────────────────────────────────
-export const API_BASE = import.meta.env.VITE_BACKEND_URL ?? 'http://localhost:5000/api'
+export const API_BASE = import.meta.env.PROD 
+  ? (import.meta.env.VITE_BACKEND_URL?.includes('localhost') ? '/api' : (import.meta.env.VITE_BACKEND_URL || '/api'))
+  : (import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000/api')
