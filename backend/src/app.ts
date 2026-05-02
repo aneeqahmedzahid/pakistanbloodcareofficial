@@ -18,10 +18,14 @@ app.use(helmet({
 
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || origin === env.FRONTEND_URL || origin.endsWith('.vercel.app')) {
-      callback(null, true);
+    // Allow local development, FRONTEND_URL, and any Vercel domain
+    const isVercel = origin?.includes('.vercel.app')
+    const isLocal  = !origin || origin.includes('localhost') || origin.includes('127.0.0.1')
+    
+    if (isLocal || isVercel || origin === env.FRONTEND_URL) {
+      callback(null, true)
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error('Not allowed by CORS'))
     }
   },
   credentials: true,
