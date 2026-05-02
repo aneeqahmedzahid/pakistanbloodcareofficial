@@ -69,6 +69,10 @@ app.get('/health', (_req: Request, res: Response) => {
   })
 })
 
+app.get('/debug-ping', (_req: Request, res: Response) => {
+  res.json({ success: true, message: 'Direct App Ping Success! 🩸' })
+})
+
 // ─── API Routes ──────────────────────────────────────────────
 app.use('/api', router)
 app.use('/', router) // Also mount at root to support direct API domain deployments
