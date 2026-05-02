@@ -71,6 +71,7 @@ app.get('/health', (_req: Request, res: Response) => {
 
 // ─── API Routes ──────────────────────────────────────────────
 app.use('/api', router)
+app.use('/', router) // Also mount at root to support direct API domain deployments
 
 // ─── 404 Handler ─────────────────────────────────────────────
 app.use((_req: Request, res: Response) => {
