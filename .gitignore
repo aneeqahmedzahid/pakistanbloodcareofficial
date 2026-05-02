@@ -1,0 +1,4 @@
+aneeq.env
+.env
+.env.*
+!.env.example
