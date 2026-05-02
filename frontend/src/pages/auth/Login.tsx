@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -24,7 +24,6 @@ const fadeUp = {
 
 const Login: React.FC = () => {
   const navigate   = useNavigate()
-  const location   = useLocation()
   const initialize = useAuthStore((s) => s.initialize)
   const [showPass, setShowPass] = useState(false)
   const [loading,  setLoading]  = useState(false)
@@ -46,7 +45,7 @@ const Login: React.FC = () => {
       toast.success('Welcome back! 🩸')
       const state = useAuthStore.getState()
       
-      let redirectPath = ROUTES.DONOR_DASHBOARD
+      let redirectPath: string = ROUTES.DONOR_DASHBOARD
       if (state.role === 'national_admin' || state.role === 'admin') redirectPath = ROUTES.ADMIN_DASHBOARD
       else if (state.role === 'blood_bank_admin') redirectPath = ROUTES.BANK_DASHBOARD
       else if (state.role === 'patient') redirectPath = ROUTES.PATIENT_DASHBOARD
