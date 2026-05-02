@@ -53,7 +53,7 @@ export const Sidebar: React.FC = () => {
       { text: 'Requests', icon: <ListAltRounded />, path: ROUTES.BANK_REQUESTS },
       { text: 'Analytics', icon: <AnalyticsRounded />, path: ROUTES.BANK_ANALYTICS },
     ]
-  } else if (role === 'national_admin' || role === 'admin') {
+  } else if (role === 'national_admin') {
     menuItems = [
       { text: 'Dashboard', icon: <DashboardRounded />, path: ROUTES.ADMIN_DASHBOARD },
       { text: 'Blood Banks', icon: <LocalHospitalRounded />, path: ROUTES.ADMIN_BANKS },

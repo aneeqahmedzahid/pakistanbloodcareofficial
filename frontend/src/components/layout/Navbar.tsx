@@ -28,7 +28,6 @@ const ROLE_DASHBOARD: Record<string, string> = {
   patient:          ROUTES.PATIENT_DASHBOARD,
   blood_bank_admin: ROUTES.BANK_DASHBOARD,
   national_admin:   ROUTES.ADMIN_DASHBOARD,
-  admin:            ROUTES.ADMIN_DASHBOARD,
 }
 
 export const Navbar: React.FC = () => {
@@ -200,6 +199,11 @@ export const Navbar: React.FC = () => {
                     Sign In
                   </Button>
                 </Link>
+                <Link to={ROUTES.ADMIN_LOGIN} className="no-underline">
+                  <Button variant="text" sx={{ color: '#01411C', fontWeight: 600 }}>
+                    Admin
+                  </Button>
+                </Link>
                 <Link to={ROUTES.REGISTER} className="no-underline">
                   <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                     <Button
@@ -282,6 +286,11 @@ export const Navbar: React.FC = () => {
               <Link to={ROUTES.LOGIN} className="no-underline" onClick={() => setDrawerOpen(false)}>
                 <Button fullWidth variant="outlined" sx={{ borderRadius: '10px', borderColor: '#01411C', color: '#01411C' }}>
                   Sign In
+                </Button>
+              </Link>
+              <Link to={ROUTES.ADMIN_LOGIN} className="no-underline" onClick={() => setDrawerOpen(false)}>
+                <Button fullWidth variant="text" sx={{ borderRadius: '10px', color: '#01411C', fontWeight: 600 }}>
+                  Admin Login
                 </Button>
               </Link>
               <Link to={ROUTES.REGISTER} className="no-underline" onClick={() => setDrawerOpen(false)}>

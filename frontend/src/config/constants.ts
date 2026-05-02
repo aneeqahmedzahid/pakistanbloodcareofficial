@@ -33,7 +33,6 @@ export const USER_ROLES = {
   PATIENT:          'patient',
   BLOOD_BANK_ADMIN: 'blood_bank_admin',
   NATIONAL_ADMIN:   'national_admin',
-  ADMIN:            'admin',
 } as const
 export type UserRole = typeof USER_ROLES[keyof typeof USER_ROLES]
 

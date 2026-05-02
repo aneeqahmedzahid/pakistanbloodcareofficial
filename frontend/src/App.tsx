@@ -97,7 +97,8 @@ function App() {
                 <Route path={ROUTES.EMERGENCY}   element={<EmergencyReq />} />
 
                 {/* Auth */}
-                <Route path={ROUTES.LOGIN}           element={<Login />} />
+                <Route path={ROUTES.LOGIN}           element={<Login audience="user" />} />
+                <Route path={ROUTES.ADMIN_LOGIN}     element={<Login audience="admin" />} />
                 <Route path={ROUTES.REGISTER}        element={<Register />} />
                 <Route path={ROUTES.FORGOT_PASSWORD} element={<ForgotPassword />} />
                 <Route path={ROUTES.RESET_PASSWORD}  element={<ResetPassword />} />
@@ -134,7 +135,7 @@ function App() {
                   </Route>
 
                   {/* National Admin */}
-                  <Route element={<RoleGuard allowed={['national_admin', 'admin']} />}>
+                  <Route element={<RoleGuard allowed={['national_admin']} />}>
                     <Route path={ROUTES.ADMIN_DASHBOARD}  element={<AdminDashboard />} />
                     <Route path={ROUTES.ADMIN_BANKS}      element={<ManageBloodBanks />} />
                     <Route path={ROUTES.ADMIN_USERS}      element={<ManageUsers />} />

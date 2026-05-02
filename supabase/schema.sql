@@ -222,11 +222,13 @@ CREATE TRIGGER inventory_updated_at   BEFORE UPDATE ON blood_inventory FOR EACH 
 CREATE OR REPLACE FUNCTION handle_new_user()
 RETURNS TRIGGER AS $$
 BEGIN
-  INSERT INTO profiles (id, email, full_name, role)
+  INSERT INTO profiles (id, email, full_name, phone, city, role)
   VALUES (
     NEW.id,
     NEW.email,
     COALESCE(NEW.raw_user_meta_data->>'full_name', 'User'),
+    NEW.raw_user_meta_data->>'phone',
+    NEW.raw_user_meta_data->>'city',
     COALESCE((NEW.raw_user_meta_data->>'role')::user_role, 'donor')
   );
   RETURN NEW;

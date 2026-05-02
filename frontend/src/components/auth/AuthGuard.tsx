@@ -17,7 +17,11 @@ export const AuthGuard: React.FC = () => {
   }
 
   if (!user) {
-    return <Navigate to={ROUTES.LOGIN} state={{ from: location }} replace />
+    const loginRoute = location.pathname.startsWith('/admin')
+      ? ROUTES.ADMIN_LOGIN
+      : ROUTES.LOGIN
+
+    return <Navigate to={loginRoute} state={{ from: location }} replace />
   }
 
   return <Outlet />
